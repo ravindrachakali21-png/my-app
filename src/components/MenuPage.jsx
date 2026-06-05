@@ -2,24 +2,15 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FullscreenMenu from './FullscreenMenu';
 
-// ============================================================
-// 🖼️ IMAGE GUIDE — put all in public/images/
-// menu-hero-bg.jpg     → hero background (restaurant dining table)
-// starters-food.jpg    → Starters left image (tomato mozzarella salad)
-// mains-food.jpg       → Mains right image (steak on white plate)
-// drinks-food.jpg      → Pastries & Drinks left (cocktail glasses)
-// lemon-decor.png      → lemon illustration top right of Starters
-// ============================================================
-
 function MenuItem({ name, price, desc }) {
   return (
-    <div className="mb-8">
+    <div className="mb-6 lg:mb-8">
       <div className="flex justify-end mb-1">
         <span className="text-gray-600 text-base" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{price}</span>
       </div>
       <div className="w-full mb-3" style={{ borderTop: '1.5px dashed #d0cfc8' }} />
       <h3 className="text-gray-900 font-light mb-2 whitespace-pre-line"
-        style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(24px, 2.2vw, 36px)', lineHeight: '1.2' }}>
+        style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(20px, 3vw, 36px)', lineHeight: '1.2' }}>
         {name}
       </h3>
       <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
@@ -35,50 +26,48 @@ export default function MenuPage() {
   return (
     <div className="bg-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
 
-      {/* ── NAVBAR ── */}
-      <nav className="absolute top-0 left-0 w-full z-30 flex items-center justify-between px-10 py-5">
-        <div className="flex items-center gap-4">
-          <div className="border border-white px-3 py-1">
-            <span className="text-white font-serif text-2xl font-bold tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>FoodZero</span>
+      {/* NAVBAR */}
+      <nav className="absolute top-0 left-0 w-full z-30 flex items-center justify-between px-4 sm:px-6 lg:px-10 py-4 lg:py-5">
+        <div className="flex items-center gap-3">
+          <div className="border border-white px-2 py-1">
+            <span className="text-white font-serif text-xl lg:text-2xl font-bold tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>FoodZero</span>
           </div>
-          <button onClick={() => setMenuOpen(true)} className="flex flex-col gap-1.5 ml-2 cursor-pointer">
-            <span className="block w-5 h-0.5 bg-white" />
-            <span className="block w-5 h-0.5 bg-white" />
-            <span className="block w-5 h-0.5 bg-white" />
+          <button onClick={() => setMenuOpen(true)} className="flex flex-col gap-1.5 ml-1 cursor-pointer">
+            <span className="block w-5 h-0.5 bg-white" /><span className="block w-5 h-0.5 bg-white" /><span className="block w-5 h-0.5 bg-white" />
           </button>
         </div>
-        <div className="flex items-center gap-6">
-          <span className="text-white text-sm tracking-wider hidden sm:block">+86 852 346 020</span>
-          <button onClick={() => navigate('/contact')} className="border border-white text-white px-6 py-2 text-sm tracking-widest hover:bg-white hover:text-black transition-all">Reservations</button>
+        <div className="flex items-center gap-3 lg:gap-6">
+          <span className="text-white text-sm tracking-wider hidden md:block">+86 852 346 020</span>
+          <button onClick={() => navigate('/contact')} className="border border-white text-white px-3 lg:px-6 py-2 text-xs lg:text-sm tracking-widest hover:bg-white hover:text-black transition-all">Reservations</button>
         </div>
       </nav>
 
-      {/* ── HERO ── */}
-      <div className="relative w-full flex items-end" style={{ height: '400px', backgroundImage: 'url(/images/menu-hero-bg.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      {/* HERO */}
+      <div className="relative w-full flex items-end" style={{ height: 'clamp(300px, 50vw, 400px)', backgroundImage: 'url(/images/menu-hero-bg.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-black/55 z-0" />
-        <div className="relative z-10 px-20 pb-16">
-          <h1 className="text-white font-serif font-light leading-tight mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(44px, 5vw, 80px)', lineHeight: '1.1' }}>
+        <div className="relative z-10 px-4 sm:px-8 lg:px-20 pb-10 lg:pb-16">
+          <h1 className="text-white font-serif font-light leading-tight mb-2" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px, 6vw, 80px)', lineHeight: '1.1' }}>
             View Our<br />New Menu
           </h1>
-          <p className="text-white/70 text-sm tracking-wide">The freshest ingredients for you every day</p>
+          <p className="text-white/70 text-sm">The freshest ingredients for you every day</p>
         </div>
       </div>
 
-      {/* ── STARTERS ── */}
-      <section className="bg-white py-24 relative overflow-hidden">
-        <div className="absolute top-8 right-20 w-20 opacity-80 pointer-events-none">
+      {/* STARTERS */}
+      <section className="bg-white py-12 lg:py-24 relative overflow-hidden">
+        <div className="absolute top-4 right-4 lg:top-8 lg:right-20 w-12 lg:w-20 opacity-80 pointer-events-none">
           <img src="/images/lemon-decor.png" alt="" className="w-full" />
         </div>
-        <div className="max-w-5xl mx-auto px-20">
-          <div className="text-center mb-16">
-            <h2 className="text-gray-900 font-light mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px, 4vw, 64px)' }}>Starters</h2>
+        <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-20">
+          <div className="text-center mb-8 lg:mb-16">
+            <h2 className="text-gray-900 font-light mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px, 5vw, 64px)' }}>Starters</h2>
             <p className="text-gray-400 text-sm">This is a section of your menu. Give your section a brief description</p>
           </div>
-          <div className="grid grid-cols-2 gap-20 items-start">
-            <div className="w-full overflow-hidden" style={{ height: '360px' }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
+            <div className="w-full overflow-hidden" style={{ height: 'clamp(220px, 40vw, 360px)' }}>
               <img src="/images/starters-food.jpg" alt="Starters" className="w-full h-full object-cover" />
             </div>
-            <div className="pt-4">
+            <div className="pt-2 lg:pt-4">
               <MenuItem name={'Grilled Okra and\nTomatoes'} price="$20" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
               <MenuItem name="Cucumber Salad" price="$18" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
               <MenuItem name="Basil Pancakes" price="$12" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
@@ -87,28 +76,28 @@ export default function MenuPage() {
         </div>
       </section>
 
-      {/* ── MAINS ── */}
-      <section className="bg-white py-24">
-        <div className="max-w-5xl mx-auto px-20">
-          <div className="text-center mb-16">
-            <h2 className="text-gray-900 font-light mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px, 4vw, 64px)' }}>Mains</h2>
+      {/* MAINS */}
+      <section className="bg-white py-12 lg:py-24">
+        <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-20">
+          <div className="text-center mb-8 lg:mb-16">
+            <h2 className="text-gray-900 font-light mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px, 5vw, 64px)' }}>Mains</h2>
             <p className="text-gray-400 text-sm">This is a section of your menu. Give your section a brief description</p>
           </div>
-          <div className="grid grid-cols-2 gap-20 items-start">
-            <div className="pt-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
+            <div className="pt-2 lg:pt-4">
               <MenuItem name={'Deep Sea Snow White\nCod Fillet'} price="$20" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
               <MenuItem name={'Steak With Rosemary\nButter'} price="$22" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
               <MenuItem name={'Steaks with Grilled\nKimchi'} price="$20" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
             </div>
-            <div className="w-full overflow-hidden" style={{ height: '360px' }}>
+            <div className="w-full overflow-hidden" style={{ height: 'clamp(220px, 40vw, 360px)' }}>
               <img src="/images/mains-food.jpg" alt="Mains" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── PASTRIES & DRINKS ── */}
-      <section className="bg-white py-24">
+      {/* PASTRIES */}
+      <section className="bg-white py-12 lg:py-24">
         <div className="flex justify-center mb-0">
           <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
             <path d="M22 4 C22 4, 10 14, 22 26 C34 38, 22 42, 22 42" stroke="#5a6e2a" strokeWidth="1.2" fill="none" strokeLinecap="round"/>
@@ -116,16 +105,16 @@ export default function MenuPage() {
             <path d="M30 9 C30 9, 38 18, 30 26" stroke="#5a6e2a" strokeWidth="1" fill="none" strokeLinecap="round"/>
           </svg>
         </div>
-        <div className="max-w-5xl mx-auto px-20">
-          <div className="text-center mb-16">
-            <h2 className="text-gray-900 font-light mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px, 4vw, 64px)' }}>Pastries &amp; Drinks</h2>
+        <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-20">
+          <div className="text-center mb-8 lg:mb-16">
+            <h2 className="text-gray-900 font-light mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px, 5vw, 64px)' }}>Pastries &amp; Drinks</h2>
             <p className="text-gray-400 text-sm">This is a section of your menu. Give your section a brief description</p>
           </div>
-          <div className="grid grid-cols-2 gap-20 items-start">
-            <div className="w-full overflow-hidden" style={{ height: '360px' }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
+            <div className="w-full overflow-hidden" style={{ height: 'clamp(220px, 40vw, 360px)' }}>
               <img src="/images/drinks-food.jpg" alt="Drinks" className="w-full h-full object-cover" />
             </div>
-            <div className="pt-4">
+            <div className="pt-2 lg:pt-4">
               <MenuItem name="Wine Pairing" price="$158" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
               <MenuItem name="Natural Wine Pairing" price="$168" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
               <MenuItem name="Whisky Flyer" price="$90" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
@@ -134,55 +123,57 @@ export default function MenuPage() {
         </div>
       </section>
 
-      {/* ── MAKE A RESERVATION ── */}
-      <section className="bg-[#f0efe8] py-28">
-        <div className="max-w-3xl mx-auto px-16 text-center">
-          <h2 className="text-gray-900 font-light mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px, 4vw, 72px)' }}>Make a Reservation</h2>
-          <p className="text-gray-400 text-sm mb-12">Get in touch with restaurant</p>
-          <div className="flex flex-col md:flex-row gap-0 mb-10">
-            <input type="text" value={form.date} onChange={e => setForm({ ...form, date: e.target.value })} className="flex-1 border border-gray-300 bg-white px-5 py-3 text-sm text-gray-600 outline-none focus:border-[#5a6e2a]" />
-            <div className="flex-1 relative">
-              <select value={form.time} onChange={e => setForm({ ...form, time: e.target.value })} className="w-full border border-gray-300 bg-white px-5 py-3 text-sm text-gray-600 outline-none appearance-none focus:border-[#5a6e2a]">
-                <option>6:00 pm</option><option>7:00 pm</option><option>8:00 pm</option><option>9:00 pm</option>
-              </select>
-              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▾</span>
-            </div>
-            <div className="flex-1 relative">
-              <select value={form.guests} onChange={e => setForm({ ...form, guests: e.target.value })} className="w-full border border-gray-300 bg-white px-5 py-3 text-sm text-gray-600 outline-none appearance-none focus:border-[#5a6e2a]">
-                <option>2 Person</option><option>3 Person</option><option>4 Person</option><option>5 Person</option>
-              </select>
-              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▾</span>
+      {/* RESERVATION */}
+      <section className="bg-[#f0efe8] py-16 lg:py-28">
+        <div className="max-w-3xl mx-auto px-4 sm:px-8 lg:px-16 text-center">
+          <h2 className="text-gray-900 font-light mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px, 5vw, 72px)' }}>Make a Reservation</h2>
+          <p className="text-gray-400 text-sm mb-8 lg:mb-12">Get in touch with restaurant</p>
+          <div className="flex flex-col gap-3 mb-8">
+            <input type="text" value={form.date} onChange={e => setForm({ ...form, date: e.target.value })} className="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-gray-600 outline-none" />
+            <div className="grid grid-cols-2 gap-3">
+              <div className="relative">
+                <select value={form.time} onChange={e => setForm({ ...form, time: e.target.value })} className="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-gray-600 outline-none appearance-none">
+                  <option>6:00 pm</option><option>7:00 pm</option><option>8:00 pm</option>
+                </select>
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▾</span>
+              </div>
+              <div className="relative">
+                <select value={form.guests} onChange={e => setForm({ ...form, guests: e.target.value })} className="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-gray-600 outline-none appearance-none">
+                  <option>2 Person</option><option>3 Person</option><option>4 Person</option>
+                </select>
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▾</span>
+              </div>
             </div>
           </div>
-          <button className="bg-[#3a4a1a] text-white px-20 py-4 text-sm tracking-widest uppercase hover:bg-[#4a5e22] transition-colors">Book Now</button>
+          <button className="bg-[#3a4a1a] text-white px-12 lg:px-20 py-4 text-sm tracking-widest uppercase hover:bg-[#4a5e22] transition-colors">Book Now</button>
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
-      <footer className="bg-[#3a4a1a] text-white pt-16 pb-8">
-        <div className="max-w-5xl mx-auto px-16">
-          <div className="grid grid-cols-3 gap-12 mb-12">
+      {/* FOOTER */}
+      <footer className="bg-[#3a4a1a] text-white pt-12 lg:pt-16 pb-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-8 lg:mb-12">
             <div>
               <div className="border border-white/60 px-3 py-2 inline-block">
                 <span className="text-white font-serif text-xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Food<br />Zero.</span>
               </div>
             </div>
             <div>
-              <h4 className="text-white text-xs font-medium tracking-widest uppercase mb-5">Contact</h4>
+              <h4 className="text-white text-xs font-medium tracking-widest uppercase mb-4">Contact</h4>
               <p className="text-white/60 text-xs leading-loose">+1 (86) 852 346 000</p>
               <p className="text-white/60 text-xs leading-loose">info@foodzero.com</p>
-              <p className="text-white/60 text-xs leading-loose mt-3">1969 Sepulveda Blvd</p>
+              <p className="text-white/60 text-xs leading-loose mt-2">1969 Sepulveda Blvd</p>
               <p className="text-white/60 text-xs leading-loose">Culver City, CA, 90230</p>
             </div>
             <div>
-              <h4 className="text-white text-xs font-medium tracking-widest uppercase mb-5">Never Miss a Recipe</h4>
+              <h4 className="text-white text-xs font-medium tracking-widest uppercase mb-4">Never Miss a Recipe</h4>
               <div className="flex">
-                <input type="email" placeholder="Email Address" className="flex-1 bg-transparent border border-white/40 px-4 py-2 text-sm text-white placeholder-white/40 outline-none" />
-                <button className="bg-[#8a9e2a] text-white px-5 py-2 text-sm hover:bg-[#9ab030] transition-colors">Subscribe</button>
+                <input type="email" placeholder="Email Address" className="flex-1 bg-transparent border border-white/40 px-3 py-2 text-sm text-white placeholder-white/40 outline-none" />
+                <button className="bg-[#8a9e2a] text-white px-4 py-2 text-sm">Subscribe</button>
               </div>
             </div>
           </div>
-          <div className="border-t border-white/20 pt-6 flex justify-between items-center">
+          <div className="border-t border-white/20 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-white/40 text-xs">© 2020 Zoro Inc. All rights Reserved</p>
             <div className="flex gap-4">
               <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-white/50 hover:text-white"><svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
